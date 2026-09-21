@@ -1,24 +1,29 @@
-package lw01.prelab;
+package lw01.unguided;
 
-public abstract class PrintJob implements Chargeable { 
+public abstract class Rental implements Chargeable { 
 
     private String id; //pake private karena simbolnya minus (priavte)
-    private int pages;
+    private int days;
+    private int copies;
 
-    protected PrintJob(String id, int pages) {
-        if (pages <= 0) {
-            throw new IllegalArgumentException("pages must be positive"); //tidak boleh null
+    protected Rental(String id, int days, int copies) {
+        if (days <= 0) {
+            throw new IllegalArgumentException("days must be positive"); //tidak boleh null
+        }
+        if (copies <=0) {
+            throw new IllegalArgumentException("copies must be positive");
         }
         this.id = id;
-        this.pages = pages;
+        this.days = days;
+        this.copies = copies;
     }
 
     public String getId() {
         return id;
     }
 
-    public int getPages() {
-        return pages;
+    public int getDays() {
+        return days;
     }
 
     @Override
@@ -32,7 +37,7 @@ public abstract class PrintJob implements Chargeable {
     }
 
     public String label() {
-        return "Print";
+        return "Rental";
     }
 
     public String summary() { //return sesuai yg ada di soal

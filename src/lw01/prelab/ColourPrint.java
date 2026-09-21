@@ -18,13 +18,13 @@ public class ColourPrint extends PrintJob {
         if (pages <= TIER_LIMIT) {
             pageCost = pages * TIER1_RATE;
         } else {
-            pageCost = (TIER_LIMIT * TIER1_RATE) + ((pages - TIER_LIMIT) * TIER2_RATE);
+            pageCost = (TIER_LIMIT * TIER1_RATE) + ((pages - TIER_LIMIT) * TIER2_RATE); //10 hlm pertama plus sisanya
         }
         return pageCost + SETUP_FEE;
     }
 
     @Override
     public String label() {
-        return "Colour";
+        return "Colour"; //utk colour print
     }
 }

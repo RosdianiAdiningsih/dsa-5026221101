@@ -1,4 +1,4 @@
-package lw01.prelab;
+package lw01.unguided;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,26 +7,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<PrintJob> jobs = new ArrayList<>();
+        List<Rental> jobs = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(new File("jobs.txt"))) {
+        try (Scanner scanner = new Scanner(new File("rental.txt"))) {
             while (scanner.hasNext()) {
                 String type = scanner.next();
                 String id = scanner.next();
-                int pages = scanner.nextInt();
+                int days = scanner.nextInt();
 
-                if (type.equalsIgnoreCase("MONO")) {
-                    jobs.add(new MonoPrint(id, pages));
-                } else if (type.equalsIgnoreCase("COLOUR")) {
-                    jobs.add(new ColourPrint(id, pages));
+                if (type.equalsIgnoreCase("LAPTOP")) {
+                    jobs.add(new LaptopRental(id, days));
+                } else if (type.equalsIgnoreCase("PROJECTOR")) {
+                    jobs.add(new ProjectorRental(id, days));
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("jobs.txt not found.");
+            System.out.println("rental.txt not found.");
             return;
         }
 
-        for (PrintJob job : jobs) {
+        for (Rental job : jobs) {
             System.out.println(job.summary());
         }
     }
