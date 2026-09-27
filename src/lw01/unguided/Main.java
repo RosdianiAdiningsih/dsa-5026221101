@@ -16,9 +16,9 @@ public class Main {
                 int days = scanner.nextInt();
 
                 if (type.equalsIgnoreCase("LAPTOP")) {
-                    jobs.add(new LaptopRental(id, days));
+                    jobs.add(new LaptopRental(id, days, unit));
                 } else if (type.equalsIgnoreCase("PROJECTOR")) {
-                    jobs.add(new ProjectorRental(id, days));
+                    jobs.add(new ProjectorRental(id, days, unit));
                 }
             }
         } catch (FileNotFoundException e) {

@@ -7,8 +7,8 @@ public class ProjectorRental extends Rental {
     private static final int EVERYDAY_BEYOND3 = 45000;
     private static final int SETUP_PROJECTOR_PERUNIT = 20000;
 
-    public ProjectorRental(String id, int days) {
-        super(id, days);
+    public ProjectorRental(String id, int days, int unit) {
+        super(id, days, unit);
     }
 
     @Override

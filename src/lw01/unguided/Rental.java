@@ -4,18 +4,18 @@ public abstract class Rental implements Chargeable {
 
     private String id; //pake private karena simbolnya minus (priavte)
     private int days;
-    private int copies;
+    private int unit;
 
-    protected Rental(String id, int days, int copies) {
+    protected Rental(String id, int days, int unit) {
         if (days <= 0) {
             throw new IllegalArgumentException("days must be positive"); //tidak boleh null
         }
-        if (copies <=0) {
-            throw new IllegalArgumentException("copies must be positive");
+        if (unit <=0) {
+            throw new IllegalArgumentException("unit must be positive");
         }
         this.id = id;
         this.days = days;
-        this.copies = copies;
+        this.unit = unit;
     }
 
     public String getId() {
@@ -29,11 +29,11 @@ public abstract class Rental implements Chargeable {
     @Override
     public abstract int calculateCharge(); //menimpa method yg sudah ada
 
-    public int calculateCharge(int copies) {
-        if (copies <= 0) {
-            throw new IllegalArgumentException("copies must be positive");
+    public int calculateCharge(int unit) {
+        if (unit <= 0) {
+            throw new IllegalArgumentException("unit must be positive");
         }
-        return copies * calculateCharge();
+        return unit * calculateCharge();
     }
 
     public String label() {
