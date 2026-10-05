@@ -22,8 +22,8 @@ public class Main {
             String line = sc.nextLine().trim();
             if (line.isEmpty()) continue;
 
-            String[] p = line.split(" ", 3);
-            String cmd = p[0];
+            String[] p = line.split(" ", 3); //split jadi maks 3 bagian
+            String cmd = p[0]; //comand / operation indeks ke 0
 
             if (cmd.equals("ADD")) {
                 list.add(line.substring(4));
@@ -42,7 +42,7 @@ public class Main {
         sc.close();
 
         System.out.println("===== Problem 1 =====");
-        System.out.println("Total songs: " + list.size());
+        System.out.println("Total songs: " + list.size()); //menghitung jumlah song
         for (int i = 0; i < list.size(); i++) {
             System.out.println((i + 1) + ": " + list.get(i));
         }
@@ -50,13 +50,13 @@ public class Main {
 
     // Problem 2: Peserta 
     static void problem2() throws Exception {
-        Set<String> set = new LinkedHashSet<>();
-        int dup = 0;
+        Set<String> set = new LinkedHashSet<>(); // LinkedHashSet biar urutan set sesuai dg yg diinputkan
+        int dup = 0; //duplicate
         Scanner sc = new Scanner(new File(dir + "participants.txt"));
 
         while (sc.hasNextLine()) {
             String name = sc.nextLine().trim();
-            if (name.isEmpty()) continue;
+            if (name.isEmpty()) continue; // if(!participants.contains(name)) {participants.add(name);} else {dup++;} //cara lain
 
             if (set.contains(name)) {
                 dup++;
@@ -68,8 +68,8 @@ public class Main {
 
         System.out.println("\n===== Problem 2 =====");
         System.out.println("Unique participants: " + set.size());
-        int no = 1;
-        for (String s : set) {
+        int no = 1; //atau 0
+        for (String s : set) { //string participant //set ga bisa pakai  get
             System.out.println(no + ". " + s);
             no++;
         }
@@ -88,23 +88,23 @@ public class Main {
             int qty = sc.nextInt();
 
             if (type.equals("ADD")) {
-                if (map.containsKey(product)) {
-                    map.put(product, map.get(product) + qty);
+                if (map.containsKey(product)) { //cek apakah product sudah ada di map
+                    map.put(product, map.get(product) + qty); 
                 } else {
-                    map.put(product, qty);
+                    map.put(product, qty); //kalau belum ada, masukkan product dan qty
                 }
             } else if (type.equals("SELL")) {
-                if (map.containsKey(product) && map.get(product) >= qty) {
-                    map.put(product, map.get(product) - qty);
+                if (map.containsKey(product) && map.get(product) >= qty) { //stok  yg dipunya harus lbh bnyk dr yg dibeli pelanggan
+                    map.put(product, map.get(product) - qty); 
                 } else {
-                    fail++;
+                    fail++; 
                 }
             }
         }
         sc.close();
 
         System.out.println("\n===== Problem 3 =====");
-        for (String key : map.keySet()) {
+        for (String key : map.keySet()) { 
             System.out.println(key + ": " + map.get(key));
         }
         System.out.println("Failed sales: " + fail);
